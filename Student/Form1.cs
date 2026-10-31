@@ -43,7 +43,7 @@ namespace Student
 
             // Хүснэгтэд оюутан нэмэх
             dgvStudents.Rows.Add(code, phone, age);
-
+            ShowStudentDetails();
             // Нийт бүртгэлийн тоо
             lblTotal.Text = "Нийт: " +
                 dgvStudents.Rows.Count;
@@ -54,6 +54,49 @@ namespace Student
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
             );
+        }
+
+
+        private void ShowStudentDetails()
+        {
+            string code = txtCode.Text;
+            string phone = txtPhone.Text;
+            int age = (int)nudAge.Value;
+
+            string birthDate =
+                dtpBirthDate.Value.ToString("yyyy-MM-dd");
+
+            string scholarship =
+                chkScholarship.Checked ? "Тийм" : "Үгүй";
+
+            string training =
+                rdoDay.Checked ? "Өдрийн" : "Оройн";
+
+            string department = cboDepartment.Text;
+
+            string subjects = "";
+
+            foreach (object item in clbSubjects.CheckedItems)
+            {
+                if (subjects != "")
+                    subjects += ", ";
+
+                subjects += item.ToString();
+            }
+
+            string language = lstLanguages.Text;
+
+            rtbSummary.Text =
+                "ОЮУТНЫ БҮРТГЭЛ\n\n" +
+                "Код: " + code + "\n" +
+                "Утас: " + phone + "\n" +
+                "Нас: " + age + "\n" +
+                "Төрсөн өдөр: " + birthDate + "\n" +
+                "Сургалт: " + training + "\n" +
+                "Тэнхим: " + department + "\n" +
+                "Тэтгэлэг: " + scholarship + "\n" +
+                "Хичээл: " + subjects + "\n" +
+                "Хэл: " + language;
         }
 
     }
