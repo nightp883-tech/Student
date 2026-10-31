@@ -10,18 +10,44 @@ namespace Student
         {
             InitializeComponent();
             btnRegister.Click += btnRegister_Click;
+            lnkClear.Click += btnClear_Click;
         }
+
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            // TextBox цэвэрлэх
             txtCode.Clear();
             txtPhone.Clear();
 
+            // Нас болон төрсөн өдөр
             nudAge.Value = 18;
+            dtpBirthDate.Value = DateTime.Today;
+
+            // Тэтгэлэг
             chkScholarship.Checked = false;
 
-            dtpBirthDate.Value = DateTime.Today;
+            // Сургалтын хэлбэр
+            rdoDay.Checked = false;
+
+            // Тэнхим
+            cboDepartment.SelectedIndex = -1;
+            // Сонгосон хичээлүүд
+            for (int i = 0; i < clbSubjects.Items.Count; i++)
+            {
+                clbSubjects.SetItemChecked(i, false);
+            }
+
+            // Хэлний сонголт
+            lstLanguages.ClearSelected();
+
+            // Дэлгэрэнгүй мэдээлэл
+            dgvStudents.Rows.Clear();
+
+            // Оюутны код дээр курсор байрлуулах
+            txtCode.Focus();
         }
+
 
 
         private void btnRegister_Click(object sender, EventArgs e)
